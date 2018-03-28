@@ -36,7 +36,7 @@ local beam = display.newImage("Images/beam.png", 0, 0)
 
 	--set the x and y pos
 	beam.x = display.contentCenterX/5
-	beam.x = display.contentCenterY*1.65
+	beam.y = display.contentCenterY*1.65
 
 	--set the beam size
 	beam.width = display.contentWidth/2
@@ -91,9 +91,22 @@ local function secondBall()
 	ball2:scale(0.5, 0.5)
 end
 
+local function thirdBall()
+	-- creating first ball
+	local ball3 = display.newImage("Images/super_ball.png", 0, 0)
+
+	-- adding to physics
+	physics.addBody(ball3, {density=1.0, friction=0.5, bounce=0.3, radius=12.5})
+
+	-- make it smaller than the original size
+	ball3:scale(0.5, 0.5)
+end
+
+
+
 ----------------------------------------------------------------------------------------------------------
 -- TIMER DELAYS - call each function after the given millisecond
 ----------------------------------------------------------------------------------------------------------
 timer.performWithDelay( 0, firstBall)
 timer.performWithDelay( 500, secondBall)
-
+timer.performWithDelay( 1000, thirdBall)
